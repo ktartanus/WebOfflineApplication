@@ -1,0 +1,123 @@
+#osoby {
+	width: auto;
+	height:auto;
+	background-color: gray;
+	border-radius: 5px;
+	margin : 20px 20px;
+}
+
+.hidden 
+{
+	display:none;
+}
+.dane_osobowe {
+	margin :0;
+	width: auto;
+	height:auto;
+	margin-top:10px;
+
+}
+
+
+.dane_osobowe span {
+	display:inline-block;
+	position: relative;
+	width: 49.8%;
+	margin : 0;
+}
+
+.dane_osobowe label {
+	display:inline-block;
+	font-weight: bold;
+	width:20%;
+	left:0;
+	text-align: right
+
+}
+.dane_osobowe input, .dane_osobowe select {
+	right:0;
+	font-weight: bold;
+	width:auto;
+}
+
+.dane_osobowe #nr_domu, .dane_osobowe #wiek, .dane_osobowe #nr_lokalu {
+	width:40px;
+}
+
+#labels_from_mail_to_oddzial label {
+	display:inline-block;
+	font-weight: bold;
+	width:10%;
+	left:0;
+	text-align: right
+}
+#labels_from_mail_to_oddzial input, #labels_from_mail_to_oddzial select {
+	right:0;
+	font-weight: bold;
+	width:70%;
+}
+footer {
+	background-color: #212412;
+	border-radius: 5px;
+	padding:5px;
+	text-align:right;
+	color: white;
+}
+
+header {
+	background-color: #f12f92;
+	border-radius: 5px;
+	padding:5px;
+	text-align:center;
+	color: white;
+	font-size:25px;
+	box-shadow: 5px 5px 12px 2px rgba(0,0,0,1);
+	-webkit-box-shadow: 5px 5px 12px 2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 5px 12px 2px rgba(0,0,0,1);
+}
+button 
+{
+	background-color: #f12b00;
+	font-size-15px;
+	border-radius: 6px;
+	color: white;
+	box-shadow: 3px 3px 10px 2px rgba(0,0,0,1);
+	-webkit-box-shadow: 3px 3px 10px 2px rgba(0,0,0,1);
+	-moz-box-shadow: 3px 3px 10px 2px rgba(0,0,0,1);
+	margin:5px;
+}
+#przycisk_dodawania
+{
+	width: 150px;
+	height:40px;
+	font-size: 20px;
+	background-color: #214d2b;
+	border-radius: 6px;
+	color: white;
+	box-shadow: 5px 5px 12px 2px rgba(0,0,0,1);
+	-webkit-box-shadow: 5px 5px 12px 2px rgba(0,0,0,1);
+	-moz-box-shadow: 5px 5px 12px 2px rgba(0,0,0,1);
+	margin:5px 40%;
+
+}
+h1#tytul
+{
+	font-size:25px;
+	margin:0px;
+
+}
+.errorInput
+{
+	background-color: red;
+}
+[disabled="true"]
+{
+	opacity:0.35; 
+}
+ul>li{
+	list-style: none;
+}
+.szczegoly_choroby
+{
+	display:none;
+}

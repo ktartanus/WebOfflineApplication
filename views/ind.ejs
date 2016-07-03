@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Lekarze</title>
+    <meta charset="UTF-8">
+    <link href="CSSlekarze.css" rel="StyleSheet" type="text/css" />
+    <script src="jquery-1.8.1.min.js" type="text/javascript"></script>
+    <script src="Dexie.min.js" type="text/javascript"></script>
+    <script src="IndexedDBStorage.js" type="text/javascript"></script>
+    <script src="Lekarze.js"></script>
+    <script src="WalidacjaFormularza.js"></script>
+   
+</head>
+<body>
+
+        <a href='/logout'>Log out here</a>
+
+    <div id="app">
+        <header><h1 id="tytul">Lekarze</h1></header>
+        <button id="pokaz_formularz_pacjentow">Pokaz formularz pacjentów</button>
+        <div id="osoby" class="hidden">
+            <div class="dane_osobowe">
+                <span>
+                <label>Pesel</label>
+                <input type="text" id="pesel" title="Podaj pesel" autofocus/>
+               	</span>
+               	<span>
+                <label for="wiek">Wiek</label>
+                <input type="number" id="wiek" title="Podaj wiek" value="18"/>
+                <label for="plec">Plec</label>
+                <select id="plec" title="Wybierz płeć">
+                		<option id="men">Mężczyzna</option>
+                		<option id="kob">Kobieta</option>
+                </select>
+                </span>
+            </div>
+            <div class="dane_osobowe">
+                <span>
+                <label for="imie">Imie</label>
+                <input type="text" id="imie" title="Podaj imie" />
+                </span>
+                <span>
+                <label for="nazwisko">Nazwisko</label>
+                <input type="text" id="nazwisko" title="Podaj nazwisko" />
+           		</span>
+            </div>
+            <div class="dane_osobowe">
+                <span>
+                <label for="kod_pocztowe">Kod-pocztowy</label>
+                <input type="text" id="kod_pocztowy" title="Podaj kod pocztowy" />
+                </span>
+                <span>
+                <label for="miasto">Miasto</label>
+                <input type="text" id="miasto" title="Podaj Miasto" />
+            	</span>
+            </div>
+            <div class="dane_osobowe">
+                <span>
+                <label for="ulica">Ulica</label>
+                <input type="text" id="ulica" title="Podaj ulicę" />
+                </span>
+                <span>
+                <label for="wojewodztwo">Województwo</label>
+                 <select id="wojewodztwo" title="Wybierz województwo">
+                		<option>Dolnośląskie</option>
+                		<option>Kujawsko-pomorskie</option>
+                		<option>Lubelskie</option>
+                		<option>Lubuskie</option>
+                		<option>Łódzkie</option>
+                		<option>Małopolskie</option>
+                		<option>Mazowieckie</option>
+                		<option>Opolskie</option>
+                		<option>Podkarpackie</option>
+                		<option>Podlaskie</option>
+                		<option>Pomorskie</option>
+                		<option>Śląskie</option>
+                		<option>Świętokrzyskie</option>
+                		<option>Warmińsko-mazurskie	</option>
+                		<option>Wielkopolskie</option>
+                		<option>Zachodniopomorskie</option>
+                </select>
+  				</span>
+            </div>
+            <div class="dane_osobowe">
+                <span>
+                <label for="nr_domu">Nr. Domu</label>
+                <input type="number" id="nr_domu" title="Podaj numer domu"/>
+                </span>
+                <span>
+                <label for="nr_lokalu">Nr. Lokalu</label>
+                <input type="number" id="nr_lokalu" title="Podaj numer lokalu"/>
+            	</span>
+            </div>
+            <div class="dane_osobowe">
+                <span>
+                <label for="gmina">Gmina</label>
+                <input type="text" id="gmina" title="Podaj nazwę gminy" />
+                </span>
+                <span>
+                <label for="powiat">Powiat</label>
+                <input type="text" id="powiat" title="Podaj nazwę powiatu" />
+            	</span>
+            </div>
+            <div class="dane_osobowe">
+                <span>
+                <label for="nr_tel_dom">Nr. tel. Dom.</label>
+                <input type="text" id="nr_tel_dom" title="Podaj numer telefonu domowego" />
+                </span>
+                <span>
+                <label for="nr_tel_kom">Nr. tel. Kom.</label>
+                <input type="text" id="nr_tel_kom" title="Podaj numer telefonu komórkowego" />
+            	</span>
+            </div>
+            <div id="labels_from_mail_to_oddzial">
+            	<div class="dane_osobowe">
+                	<label for="email">E-mail</label>
+                	<input type="email" id="email" title="Podaj adres e-mail" />
+            	</div>
+            	<div class="dane_osobowe">
+                	<label for="uprawnienia">Uprawnienia</label>	
+            		<select id="uprawnienia" title="Wybierz uprawnienia">
+                		<option>A - Normalne ubezpieczenie</option>
+                		<option>AZ - chorzy o azbestozę</option>
+                		<option>CN - nieubezpieczone kobiety w ciąży (także w okresie porodu i połogu)</option>
+                		<option>DN - nieubezpieczone osoby poniżej 18 roku życia</option>
+                		<option>IN - nieubezpieczeni, którym świadczenia obowiązują na podstawie odrębnych przepisów</option>
+                		<option>PO - żołnieże zasadniczej służyby wojskowej</option>
+                		<option>X - brak uprawnień</option>
+                		<option>WP - żołnieżę w czynnej służbie wojskowej</option>
+                		<option>ZK - zasłużeni honorowi dawcy krwi</option>		
+            		</select>
+            	</div>
+            	<div class="dane_osobowe">
+                	<label for="obywatelstwo">Obywatelstwo</label>	
+            		<select id="obywatelstwo" title="Wybierz obywateltwo">
+                		<option>PL - Obywatelstwo Polskie</option>
+                		<option>Z - Obywatelstwo zagraniczne</option>
+                	</select>
+            	</div>
+            	<div class="dane_osobowe">
+                	<label for="oddzial_nfz">Oddział NFZ</label>	
+            		<select id="oddzial_nfz" title="Wybierz odział NFZ">
+                		<option>Warszawa - ul.Barska 12</option>
+                		<option>Warszawa - ul.Piwowarska 8</option>
+                	</select>
+            	</div>
+            </div>
+            <button id="przycisk_dodawania" disabled="true">dodaj</button>
+
+
+        </div>
+            
+            <br>
+            <input type="text" id="input_testowy2" />
+            <button id="usun_obiekt"> usun obiekt</button>
+            <br>
+          
+        <div id="app2">
+
+        	<button id="pokaz_formularz_wizyt">Pokaz formularz wizyt</button>
+
+        	<div id="formularz_wizyt" class="hidden">
+            	<div class="dane_historii">
+
+                	<span>
+                	<label>Pesel</label>
+                	<input type="text" id="pesel_osoby" title="Podaj pesel" autofocus/>
+                	</span>
+            	</div>
+            	<div class="dane_historii">
+                	<span>
+                	<label>Objawy</label>
+                	<input type="text" id="objawy" title="Podaj objawy"/>
+                	</span>
+               	</div>
+            	<div class="dane_historii">
+                	<span>
+                	<label>Zdiagnozowana Choroba</label>
+                	<input type="text" id="choroba" title="Podaj nazwę choroby"/>
+                	</span>
+            	</div>
+            	<div class="dane_historii">
+                	<span>
+                	<label>Leki</label>
+                	<input type="text" id="leki" title="Podaj pesel" />
+                	</span>
+            	</div>
+            	<button id="dodaj_wizyte" disabled="true"> Dodaj Wizyte </button>
+
+        	</div>	
+        	<div id="ramka_chorobowa" class="hidden">
+                <ul id="lista_chorobowa">
+
+                </ul>
+            </div>
+            <!--
+        	<br>
+            <button id="usun_historie"> usun historie</button>
+            -->
+            <br>
+            <input type="text" id="pokaz_choroby" />
+            <button id="przycisk_pokazywania_chorob"> Pokaz historie</button>
+            <br>
+            <button id="usun_tabele"> usun baze danych</button>
+    	</div>
+
+    	<div id="template1" class="hidden">
+        	<ul id="lista_chorob">
+            	<li class="choroba">
+                	<button class="rozwin_szczegoly_choroby">+</button>
+                	<span class="nazwa_choroby"></span>
+                	<div class="szczegoly_choroby">
+                    	<div class="data"></div>
+                    	<div class="objawy"></div>
+                    	<div class="leki"></div>
+                	</div>
+            	</li>
+        	</ul>
+    	</div>
+
+        <footer>
+        created by Kamil Tartanus
+        </footer>
+    </div>
+
+    <!--
+    <div id="templates" class="hidden">
+        <ul id="task-template">
+            <li class="task">
+                <button class="toggle-details">+</button>
+                <span class="task-name"></span>
+                <input type="text" class="task-name hidden"/>
+                <div class="tools">
+                    <button class="delete" title="Delete">X</button>
+                    <button class="move-up" title="Up">^</button>
+                    <button class="move-down" title="Down">v</button>
+                </div>
+                <div class="details">
+                    <label>Start date:</label>
+                    <input type="date" data-field="startDate"/><br/>
+                    <label>Due date:</label>
+                    <input type="date" data-field="dueDate"/><br/>
+                    <label>Status:</label>
+                    <select data-field="status">
+                        <option value="0">None</option>
+                        <option value="1">Not Started</option>
+                        <option value="2">Started</option>
+                        <option value="3">Completed</option>
+                    </select><br/>
+                    <label>Priority:</label>
+                    <select data-field="priority">
+                        <option value="0">None</option>
+                        <option value="1">Low</option>
+                        <option value="2">Normal</option>
+                        <option value="3">High</option>
+                    </select><br/>
+                    <label>%&nbsp;Complete:</label>
+                    <input type="number" data-field="pctComplete" min="0" max="100" step="10" value="0"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+    -->
+</body>
+</html>
